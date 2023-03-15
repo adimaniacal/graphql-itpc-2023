@@ -15,6 +15,7 @@ const schema = buildSchema(`
         updateUserByLocation(id: Int!, location: String!): User
     }
     type User {
+        id: Int
         firstName: String
         lastName: String
         email: String
@@ -52,13 +53,14 @@ const getUserByEmail = function (args) {
 };
 
 const updateUserByLocation = function ({ id, location }) {
-  user.map((user) => {
+  usersData.map((user) => {
     if (user.id === id) {
       user.location = location;
+
       return user;
     }
   });
-  return user.filter((user) => user.id === id)[0];
+  return usersData.filter((user) => user.id === id)[0];
 };
 
 // Root resolver
