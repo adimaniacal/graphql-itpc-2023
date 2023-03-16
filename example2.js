@@ -9,7 +9,7 @@ const schema = buildSchema(`
     type Query {
         user(id: Int!): User
         userByLocation(location: String): [User]
-        userByEmail(email: String): [User]
+        userByEmail(email: String): User
     }
     type Mutation {
         updateUserByLocation(id: Int!, location: String!): User
@@ -44,12 +44,10 @@ const getUsersByLocation = function (args) {
 };
 
 const getUserByEmail = function (args) {
-  if (args.email) {
-    const email = args.email;
-    return usersData.filter((user) => user.email === email);
-  } else {
-    return usersData;
-  }
+  const email = args.email;
+  return usersData.filter((user) => {
+    return user.email == email;
+  })[0];
 };
 
 const updateUserByLocation = function ({ id, location }) {

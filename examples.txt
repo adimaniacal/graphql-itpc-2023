@@ -1,0 +1,84 @@
+query getUserById($user: Int!) {
+    user(id: $user) {
+          ...userFields
+    }
+  }
+      
+  
+query getUsersWithFragments($user1: Int!, $user2: Int!) {
+  user1: user(id: $user1) {
+    ...userFields
+  }
+  user2: user(id: $user2) {
+    ...userFields
+  }
+}
+
+fragment userFields on User {
+  id
+  firstName
+  lastName
+  email
+  gender
+  employer
+  jobTitle
+  ein
+  location
+}
+
+query getUserFromLocation ($location: String!) {
+  userByLocation (location: $location) {
+    firstName
+    lastName
+    location
+  }
+}
+
+query getSingleUserByEmail ($email: String!) {
+  userByEmail(email: $email) {
+    firstName
+    lastName
+    location
+    email
+  }
+}
+
+
+mutation updateUserByLocation($id: Int!, $location: String!) {
+  updateUserByLocation(id: $id, location: $location) {
+    id
+    firstName
+    lastName
+    email
+    gender
+    employer
+    jobTitle
+    ein
+    location
+  }
+}
+
+
+
+Variables for queries:
+
+{ "user1": 5}
+
+{
+  "user1": 1,
+  "user2": 2
+}
+
+{
+  "location": "China"
+}
+
+{
+  "email": "jeakinsk@dailymail.co.uk"
+}
+
+Mutation:
+{
+  "id": 2,
+  "location": "UK"
+}
