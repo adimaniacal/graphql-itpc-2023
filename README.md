@@ -23,4 +23,4 @@ The execution of these commands will open up a GraphiQL, an interactive in-brows
 
 `node example2.js` will run on `http://localhost:4000/graphql`
 
-The example queries and mutations could be tried out from the example_queries.txt file in the repo.
+The example queries and mutations could be tried out from the examples.txt file in the repo. We are using dummy data to showcase how to use GraphQL on the client side to send queries and mutations to the server. The example showcase several query structures to show GraphQL query configurations.  
